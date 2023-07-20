@@ -18,5 +18,5 @@ def test_guest_can_add_product_to_basket(browser, link):
     page.open()
     page.push_button_add_to_basket()
     page.solve_quiz_and_get_code()
-    page.should_be_message_about_adding()
-    page.should_be_message_basket_total()
+    page.get_message_about_adding()
+    page.get_message_total_basket()
