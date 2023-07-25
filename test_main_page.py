@@ -1,3 +1,4 @@
+from pages.basket_page import BasketPage
 from pages.login_page import LoginPage
 from .pages.main_page import MainPage
 
@@ -19,12 +20,10 @@ def test_guest_should_see_login_link(browser):
 
 
 def test_guest_cant_see_product_in_basket_opened_from_main_page(browser):
-    link = "http://selenium1py.pythonanywhere.com/catalogue/the-shellcoders-handbook_209?promo=midsummer"
+    link = "https://selenium1py.pythonanywhere.com/en-gb/"
     page = MainPage(browser, link)
     page.open()
-"""
-Гость открывает главную страницу
-Переходит в корзину по кнопке в шапке сайта
-Ожидаем, что в корзине нет товаров
-Ожидаем, что есть текст о том что корзина пуста
-"""
+    page.go_to_basket_page()
+    basket_page = BasketPage(browser, browser.current_url)
+    basket_page.there_is_not_any_product_in_basket()
+    basket_page.can_see_message_about_empty_basket()

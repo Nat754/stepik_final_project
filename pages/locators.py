@@ -31,3 +31,5 @@ class BasePageLocators:
 
 class BasketPageLocators:
     BASKET_BUTTON = (By.CSS_SELECTOR, "span a.btn.btn-default")
+    BASKET_EMPTY_MESSAGE = (By.CSS_SELECTOR, "#content_inner p")
+    BASKET_PRODUCTS = (By.CSS_SELECTOR, "h2.col-sm-6.h3")

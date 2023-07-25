@@ -2,7 +2,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.common import NoSuchElementException, NoAlertPresentException, TimeoutException
 from math import log, sin
 from selenium.webdriver.support.wait import WebDriverWait
-from pages.locators import ProductPageLocators, BasePageLocators
+from pages.locators import ProductPageLocators, BasePageLocators, BasketPageLocators
 
 
 class BasePage:
@@ -19,6 +19,10 @@ class BasePage:
         message_basket_total = self.browser.find_element(*ProductPageLocators.MESSAGE_BASKET_TOTAL).text
         product_price = self.browser.find_element(*ProductPageLocators.PRODUCT_PRICE).text
         assert product_price in message_basket_total, "No price of product in the message"
+
+    def go_to_basket_page(self):
+        link = self.browser.find_element(*BasketPageLocators.BASKET_BUTTON)
+        link.click()
 
     def go_to_login_page(self):
         link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
